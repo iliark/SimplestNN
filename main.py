@@ -5,10 +5,10 @@ def act(x):
     return 0 if x < 0 else 1
 
 
-def buy(comfort, price, brightColored):
-    x = np.array([comfort, price, brightColored]) #вектор входных значений
-    w11 = [0.8, 0.3, -1]
-    w12 = [0.3, 0, 2]     #веса на входах нейронов скрытого слоя
+def buy(comfort, price, brightColored, height, width):
+    x = np.array([comfort, price, brightColored, height, width]) #вектор значений входного слоя
+    w11 = [0.9, 0.5, -1, 0.4, 0.3]
+    w12 = [0.3, 1, 2, -0.1, -0.2 ]     #веса на входах нейронов скрытого слоя
     weight1 = np.array([w11, w12])
     weight2 = np.array([1, -1]) #веса выходов нейронов скрытого слоя
 
@@ -30,9 +30,10 @@ print("Вводите 1 для положительного ответа, 0 дл
 comfort = int(input("Салон комфортабельный?: "))
 price = int(input("Цена приемлемая?: "))
 brightColored = int(input("Яркий цвет?: "))
+height = int(input("Высокая?: "))
+width = int(input("Широкая?: "))
 
-
-if buy(comfort, price, brightColored) == 1:
+if buy(comfort, price, brightColored, height, width) == 1:
     print("Машина подойдет для меня")
 else:
     print("Машина подойдет жене")
